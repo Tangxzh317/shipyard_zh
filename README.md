@@ -11,7 +11,7 @@ shipyard 中文静态插件
         
 2.下载中文静态页面
 
-        git clone https://github.com/StarWars-Team/shipyard_zh.git
+        git clone https://github.com/Tangxzh317/shipyard_zh.git
 
 3.将汉化文件拷贝到Docker 
 
