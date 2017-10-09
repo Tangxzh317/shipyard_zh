@@ -22,8 +22,11 @@
         vm.repoName = "";
 
         vm.showDestroyContainerDialog = showDestroyContainerDialog;
+	vm.showDestroyAllDialog = showDestroyAllDialog;
         vm.showRestartContainerDialog = showRestartContainerDialog;
+	vm.showRestartAllDialog = showRestartAllDialog;
         vm.showStopContainerDialog = showStopContainerDialog;
+	vm.showStopAllDialog = showStopAllDialog;
         vm.showPauseContainerDialog = showPauseContainerDialog;
         vm.showScaleContainerDialog = showScaleContainerDialog;
         vm.showRenameContainerDialog = showRenameContainerDialog;
@@ -164,15 +167,24 @@
             vm.selectedContainerId = container.Id;
             $('#destroy-modal').modal('show');
         }
+	function showDestroyAllDialog() {
+            $('#destroyAll-modal').modal('show');
+        }
 
         function showRestartContainerDialog(container) {
             vm.selectedContainerId = container.Id;
             $('#restart-modal').modal('show');
         }
+	function showRestartAllDialog() {
+            $('#restartAll-modal').modal('show');
+        }
 
         function showStopContainerDialog(container) {
             vm.selectedContainerId = container.Id;
             $('#stop-modal').modal('show');
+        }
+	function showStopAllDialog() {
+            $('#stopAll-modal').modal('show');
         }
 
         function showPauseContainerDialog(container) {
