@@ -17,6 +17,25 @@
 </div>
 </div>
 
+<div id="destroyAll-modal" class="ui small modal transition">
+<i class="close icon"></i>
+<div class="header">
+    容器销毁警告！
+</div>
+<div class="content">
+    <p>你确定想要销毁这些容器吗?</p>
+</div>
+<div class="actions">
+    <div class="ui negative button">
+        No
+    </div>
+    <div ng-click="vm.destroyAll()" class="ui positive right labeled icon button">
+        Yes
+        <i class="checkmark icon"></i>
+    </div>
+</div>
+</div>
+
 <div id="restart-modal" class="ui small modal transition">
     <i class="close icon"></i>
     <div class="header">
@@ -36,6 +55,25 @@
     </div>
 </div>
 
+<div id="restartAll-modal" class="ui small modal transition">
+    <i class="close icon"></i>
+    <div class="header">
+        容器重启警告！
+    </div>
+    <div class="content">
+        <p>你确定要重启这些容器吗?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            No
+        </div>
+        <div ng-click="vm.restartAll()" class="ui positive right labeled icon button">
+            Yes
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
 <div id="stop-modal" class="ui small stop modal transition">
     <i class="close icon"></i>
     <div class="header">
@@ -49,6 +87,25 @@
             No
         </div>
         <div ng-click="vm.stopContainer()" class="ui positive right labeled icon button">
+            Yes
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
+<div id="stopAll-modal" class="ui small stop modal transition">
+    <i class="close icon"></i>
+    <div class="header">
+        容器停止警告！
+    </div>
+    <div class="content">
+        <p>你确定要停止这些容器吗?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            No
+        </div>
+        <div ng-click="vm.stopAll()" class="ui positive right labeled icon button">
             Yes
             <i class="checkmark icon"></i>
         </div>
@@ -294,15 +351,15 @@
         <i class="ban icon"></i>
         清理 
     </a>
-    <a class="item" ng-click="vm.restartAll()">
+    <a class="item" ng-click="vm.showRestartAllDialog()">
         <i class="refresh icon"></i>
         重启 
     </a>
-    <a class="item" ng-click="vm.stopAll()">
+    <a class="item" ng-click="vm.showStopAllDialog()">
         <i class="stop icon"></i>
         停止 
     </a>
-    <a class="item" ng-click="vm.destroyAll()">
+    <a class="item" ng-click="vm.showDestroyAllDialog()">
         <i class="delete icon"></i>
         销毁 
     </a>
