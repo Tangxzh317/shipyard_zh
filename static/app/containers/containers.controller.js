@@ -15,6 +15,8 @@
         vm.selected = {};
         vm.selectedItemCount = 0;
         vm.selectedAll = false;
+	vm.hideSystemContainer = true;
+        vm.hideStr = '!shipyard';
         vm.numOfInstances = 1;
         vm.selectedContainer = null;
         vm.selectedContainerId = "";
@@ -41,13 +43,14 @@
         vm.commitContainer = commitContainer;
         vm.refresh = refresh;
         vm.containerStatusText = containerStatusText;
-		vm.nodeName = nodeName;
-		vm.containerName = containerName;
+	vm.nodeName = nodeName;
+	vm.containerName = containerName;
         vm.checkAll = checkAll;
         vm.clearAll = clearAll;
         vm.destroyAll = destroyAll;
         vm.stopAll = stopAll;
         vm.restartAll = restartAll;
+	vm.hideContainer = hideContainer;
 
         refresh();
 
@@ -86,6 +89,14 @@
             });
             return;
         });
+	
+	function hideContainer() {
+            if(vm.hideSystemContainer){
+                vm.hideStr = '!shipyard-';
+            }else {
+                vm.hideStr = "";
+            }
+        }
 
         function clearAll() {
             angular.forEach(vm.selected, function (s) {
