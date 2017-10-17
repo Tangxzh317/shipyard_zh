@@ -224,6 +224,10 @@
             <div class="ui small icon input">
                 <input ng-model="tableFilter" placeholder="Search containers..." reset-field/>
             </div>
+            <div class="ui" >
+                <input type="checkbox" ng-model="vm.hideSystemContainer" ng-click="vm.hideContainer()">
+                <label>隐藏系统容器</label>
+            </div>
         </div>
     </div>
 
@@ -281,7 +285,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-class="{'active': vm.selected[c.Id].Selected}" ng-repeat="c in filteredContainers = (vm.containers | filter:tableFilter)" jquery>
+                    <tr ng-class="{'active': vm.selected[c.Id].Selected}" ng-repeat="c in filteredContainers = (vm.containers | filter:tableFilter|filter:hideStr)" jquery>
                         <td class="collapsing">
                             <div class="positive ui fitted checkbox">
                                 <input type="checkbox" id="{{$index}}-cb" ng-model="vm.selected[c.Id].Selected">
