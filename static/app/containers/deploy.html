@@ -45,7 +45,13 @@
                             </div>
                             <div class="fields">
                                 <div class="eight wide field">
-                                    <label>主机名</label>
+                                    <label>主机名
+                                        <i class="blue help circle icon"></i>
+                                        <div class="ui popup" style="width: 400px;">
+                                            <h5>主机名</h5>
+                                            <p>此选项设置的是容器创建后，<b>容器操作系统</b>的hostname，如果不填写，系统将生成一个随机字符串作为容器的hostname。</p>
+                                        </div>
+                                    </label>
                                     <input name="hostname" class="input" type="text" ng-model="vm.request.Hostname" placeholder="Hostname"></input>
                                 </div>
                                 <div class="eight wide field">
@@ -278,10 +284,22 @@
                                 </div>
                                 <div class="five wide field">
                                     <label>主机监听地址</label>
-                                    <input name="hostPort" class="input" type="text" ng-model="vm.hostIp" placeholder="0.0.0.0"></input>
+                                    <input name="hostIp" class="input" type="text" ng-model="vm.hostIp" placeholder="0.0.0.0"></input>
                                 </div>
                                 <div class="three wide field">
-                                    <label>主机端口</label>
+                                    <label>主机端口
+                                        <i class="blue help circle icon"></i>
+                                        <div class="ui popup" style="width: 400px;">
+                                            <h5>主机端口</h5>
+                                            <p>该端口开放在主机上，会映射到容器对应的端口上。</p>
+                                                <ul>
+                                                    <li>主机端口不能设置为 8080,2375,7001,4001,3375，3376</li>
+                                                    <li>主机端口值不要设置为1024以下的，因为这可能会与系统端口冲突</li>
+                                                    <li>您设置的端口需要自己确认是否会与您自己的应用系统冲突</li>
+                                                    <li>您可以选择“自动开启所有端口”选项，以确保不会端口冲突</li>
+                                                </ul>
+                                        </div>
+                                    </label>
                                     <input name="hostPort" class="input" type="text" ng-model="vm.hostPort" placeholder="Host Port"></input>
                                 </div>
                                 <div class="one wide field">
@@ -345,6 +363,36 @@ $(function(){
                 }
                 ]
             },
+            hostPort: {
+                identifier : 'hostPort',
+                rules: [
+                    {
+                        type : 'not[8080]',
+                        prompt : 'Can not use 8080,2375,7001,4001,3375,3376 ports'
+                    },
+                    {
+                        type : 'not[2375]',
+                        prompt : 'Can not use 8080,2375,7001,4001,3375,3376 ports'
+                    },
+                    {
+                        type : 'not[7001]',
+                        prompt : 'Can not use 8080,2375,7001,4001,3375,3376 ports'
+                    },
+                    {
+                        type : 'not[4001]',
+                        prompt : 'Can not use 8080,2375,7001,4001,3375,3376 ports'
+                    },
+                    {
+                        type : 'not[3375]',
+                        prompt : 'Can not use 8080,2375,7001,4001,3375,3376 ports'
+                    },
+                    {
+                        type : 'not[3376]',
+                        prompt : 'Can not use 8080,2375,7001,4001,3375,3376 ports'
+                    }
+                ]
+            },
+
         });
 
     $('.help.circle.icon').popup({
