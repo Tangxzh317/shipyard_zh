@@ -5,10 +5,11 @@
         .module('shipyard.containers')
         .controller('ContainerDeployController', ContainerDeployController);
 
-    ContainerDeployController.$inject = ['containers', '$http', '$state'];
-    function ContainerDeployController(containers, $http, $state) {
+    ContainerDeployController.$inject = ['containers', '$http', '$state','images'];
+    function ContainerDeployController(containers, $http, $state,images) {
         var vm = this;
         vm.containers = containers;
+        vm.images = images;
         vm.deployImages = [];
         vm.containerLinkNames = [];
 
