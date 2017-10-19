@@ -16,6 +16,14 @@
                     });
                 return promise;
             },
+            listimages: function () {
+                var promise = $http
+                    .get('/images/json')
+                    .then(function (response) {
+                        return response.date;
+                    });
+                return promise;
+            },
             inspect: function(containerId) {
                 var promise = $http
                     .get('/containers/' + containerId + '/json')
