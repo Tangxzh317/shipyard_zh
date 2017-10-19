@@ -32,12 +32,10 @@
                                             <p>如果仓库被忽略, Docker 将默认你部署的镜像来自  <a href="https://registry.hub.docker.com/" target="_blank">官方 Docker Hub源</a>.  如果仓库名和命名空间都被省略, 那么 Docker 将默认从 官方 Docker 镜像库中 寻找镜像部署.</p>
                                         </div>
                                     </label>
-                                    <div class="ui corner labeled input">
-                                        <input name="image" class="input" type="text" ng-model="vm.request.Image" placeholder="Image"></input>
-                                        <div class="ui corner label">
-                                            <i class="asterisk icon"></i>
-                                        </div>
-                                    </div>
+                                    <select name="image" ng-model="vm.request.Image" class="ui search fluid dropdown">
+                                         <option value="">镜像名称</option>
+                                         <option ng-repeat="i in vm.images" value="{{i.RepoTags[0]}}">{{i.RepoTags}}</option>
+                                    </select>
                                 </div>
 
                                 <div class="field">
@@ -175,7 +173,7 @@
                         <div class="ui horizontal segment">
                             <h5 class="ui dividing header">容器名</h5>
                             <div class="field">
-                                <input name="containerName" class="input" type="text" ng-model="vm.containerName" placeholder="Container Name"></input> 
+                                <input name="containerName" class="input" type="text" ng-model="vm.containerName" placeholder="容器名称请不要以 'shipyard-'  开头"></input> 
                             </div>
                             <h5 class="ui dividing header">资源限制</h5>
                             <div class="two fields">
