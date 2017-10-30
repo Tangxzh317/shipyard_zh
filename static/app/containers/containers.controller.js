@@ -324,17 +324,17 @@
 			// Names with the same number of components are considered in undefined order
 			var shortestName = "";
 			var minComponents = 99;
-			
-			var names = container.Names
-			for(var i=0; i<names.length; i++) {
-				var name = names[i];
-				var numComponents = name.split('/').length
-				if(numComponents < minComponents) {
-					shortestName = name;
-					minComponents = numComponents;
+			if(container != null){
+				var names = container.Names;
+				for(var i=0; i<names.length; i++) {
+					var name = names[i];
+					var numComponents = name.split('/').length
+					if(numComponents < minComponents) {
+						shortestName = name;
+						minComponents = numComponents;
+					}
 				}
 			}
-
 			return shortestName;			
 		}
     }
