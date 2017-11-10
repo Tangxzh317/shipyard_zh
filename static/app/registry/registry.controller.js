@@ -11,9 +11,12 @@
             vm.registryId = $stateParams.id;
             vm.repositories = resolvedRepositories;
             vm.refresh = refresh;
+	    vm.selectedImage = "";
             vm.selectedRepository = null;
             vm.showRemoveRepositoryDialog = showRemoveRepositoryDialog;
+	    vm.showDownloadImageDialog = showDownloadImageDialog;
             vm.removeRepository = removeRepository;
+	    vm.downloadImage = downloadImage;
 
             function refresh() {
                 RegistryService.listRepositories(vm.registryId)
@@ -33,6 +36,29 @@
                     $('.ui.small.remove.modal').modal('show');
                 }
             };
+	
+	    function showDownloadImageDialog(img) {
+                if(img.registryUrl.substring(0,5) == 'https') {
+                    vm.selectedImage = img.registryUrl.substr(8) + '/' + img.name + ':' + img.tag;
+                }else{
+                    vm.selectedImage = img.registryUrl.substr(7) + '/' + img.name + ':' + img.tag;
+                }
+
+                $('#downloadImage-modal').modal('show');
+            }
+		
+	    function downloadImage() {
+                oboe({
+                    url: '/images/create?fromImage=' + vm.selectedImage,
+                    method: "POST",
+                    withCredentials: true,
+                    headers: {
+                        'X-Access-Token': localStorage.getItem("X-Access-Token")
+                    }
+                });
+                vm.selectedImage = "";
+
+            }
 
             function removeRepository() {
                 RegistryService.removeRepository(vm.registryId, vm.selectedRepository)
