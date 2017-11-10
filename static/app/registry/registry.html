@@ -17,6 +17,25 @@
 </div>
 </div>
 
+<div id="downloadImage-modal" class="ui small modal transition">
+    <i class="close icon"></i>
+    <div class="header">
+        下载镜像: {{ vm.selectedImage }}
+    </div>
+    <div class="content">
+        <p>确定要下载此镜像吗?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">
+            No
+        </div>
+        <div ng-click="vm.downloadImage()" class="ui positive right labeled icon button">
+            Yes
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
 <div class="ui padded grid">
     <div class="two column row">
         <div class="left floated column">
@@ -74,6 +93,9 @@
                 <td class="collapsing">
                     <div  ng-show="!r.hasProblems" ui-sref="dashboard.inspectRepository({registryId: vm.registryId, repositoryName: r.name, repositoryTag: r.tag})" class="compact ui icon button">
                         <i class="search icon"></i>
+                    </div>
+		    <div ng-click="vm.showDownloadImageDialog(r)" class="compact ui green icon button">
+                        <i class="download icon"></i>
                     </div>
                 </td>
             </tr>
